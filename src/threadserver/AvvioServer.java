@@ -20,24 +20,21 @@ import java.util.logging.Logger;
  *
  * @author franc
  */
-public class ThreadServer {
+public class AvvioServer {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) throws IOException {
         // TODO code application logic here
-        
-          int port =2000;
     
-        int time =5000;
+   
     
-    ServerSocket sSocket = null;
-    
-    Socket socket = null;
-    
-    
-    
+    Server svr = new Server(2000);
+    svr.ascolto();
+    svr.leggi();
+    svr.scrivi("Benvenuto client!");
+    /*
         try {
             //1) apertura porta
             // il server si mette in ascolto
@@ -55,11 +52,12 @@ public class ThreadServer {
           
         } catch (BindException ex) {
             System.err.println("Server già avviato");
-            Logger.getLogger(ThreadServer.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            Logger.getLogger(AvvioServer.class.getName()).log(Level.SEVERE, null, ex);
+        }*/
+          //3 scambio dati
           //3 scambio dati
         
-        finally{
+     /*   finally{
              try {
                  //4)Chiusura socket
                 if (socket != null){
@@ -67,10 +65,14 @@ public class ThreadServer {
                 }
                 
             } catch (IOException ex) {
-                Logger.getLogger(ThreadServer.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(AvvioServer.class.getName()).log(Level.SEVERE, null, ex);
             }
         
-        }
+        }*/
+        
+        Countdown c = new Countdown(100);
+        c.start();
+        
         
      
     

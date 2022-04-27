@@ -5,8 +5,12 @@
  */
 package threadserver;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
-import java.net.ConnectException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.net.InetAddress;
 import java.net.Socket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -16,40 +20,32 @@ import java.util.logging.Logger;
  * @author franc
  */
 public class Client {
-    
-    public static void main(String[] args) throws IOException {
-      int port =2000;
-        Socket socket = null;
+    Socket so;
+    BufferedWriter bw;
+     BufferedReader br;
+    public Client(InetAddress ip,int porta){
+        try {
+            so = new Socket(ip,porta);
+             bw = new BufferedWriter(new OutputStreamWriter(so.getOutputStream()));
+              br = new BufferedReader(new InputStreamReader(so.getInputStream()));
+        } catch (IOException ex) {
+            Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+        
+   
+     
         
          
-          try {
-              //richiesta connessione al server
+          
+       /* try {
+            //richiesta connessione al server
 
-              socket = new Socket("127.0.0.1",port);
-              System.out.println("Server connesso con il client"+ socket.getRemoteSocketAddress());
+            so = new Socket("127.0.0.1",port);
+            System.out.println("Server connesso con il client"+ socket.getRemoteSocketAddress());
              System.out.println("porta client"+ socket.getLocalPort());
-          } catch (ConnectException ex) {
-                          System.err.println("Errore server non disponibile");
-
-          }
-            catch (IOException ex)
-            {
-                              Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
-
-            }
-          
-          //chiusura collegamento
-          finally {
-              try{
-                  socket.close();
-              } 
-              catch (IOException ex){
-                   Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
-
-              }
-          }
-          
-             
-        }
-    
+        } catch (IOException ex) {
+            Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
+        }*/
+        
 }

@@ -32,6 +32,28 @@ public class Client {
             Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+     public void scrivi(String messaggio){
+         try {
+             bw.write(messaggio+"\n");
+             bw.flush();
+         } catch (IOException ex) {
+             Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
+         }
+       
+    }
+     
+    public String leggi(){
+        String messagioritorno="";
+         try {
+             messagioritorno = br.readLine();
+         } catch (IOException ex) {
+             Logger.getLogger(Client.class.getName()).log(Level.SEVERE, null, ex);
+         }
+        return messagioritorno;
+    }
+    
+    
         
    
      

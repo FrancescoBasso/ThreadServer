@@ -29,8 +29,8 @@ public class Server {
          try {
              ss = new ServerSocket(porta);
              System.out.println("in attesa di connessione");
-             ss.setSoTimeout(3000);
-             cd = new Countdown(2000);
+             ss.setSoTimeout(10000);
+             cd = new Countdown(1000);
              cd.start();
          } catch (IOException ex) {
              Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
